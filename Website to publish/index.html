@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer Coin - Nostalgic Digital Asset</title>
+    <meta name="description" content="Summer Coin - A digital asset that captures the essence of holiday nostalgia and summer memories">
+   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FAD961 0%, #F76B1C 100%); /* soleil jaune -> orange couché de soleil */
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+            .hero {
+            font-family: 'Orbitron', 'Roboto', sans-serif;
+     
+            text-align: center;
+            padding: 60px 20px;
+            
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #222222;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #555555;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #333333;
+        }
+        /* Header Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2c3e50;
+        }
+
+        /* Animated Background */
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-30px) rotate(10deg);
+            }
+            66% {
+                transform: translateY(30px) rotate(-10deg);
+            }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            padding-top: 100px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            margin-bottom: 4rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        /* Token Display */
+        .token-display {
+           
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out 0.6s both;
+
+        }
+
+.token-logo {
+    text-align: center;
+    margin: 0 auto 1.5rem;
+}
+
+.token-logo img.token-img {
+    width: 200px;
+    height: auto;
+    display: inline-block;
+    outline: 3px solid white;   /* contour fin */
+    outline-offset: -5px;       /* rapproche le contour de l’image */
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Effet au survol */
+.token-logo img.token-img:hover {
+    transform: scale(1.08);  /* zoom léger */
+    box-shadow: 0 10px 25px rgba(255, 165, 0, 0.4); /* halo orangé type été */
+}
+
+
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Price Information */
+        .price-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .price-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .price-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-change {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .price-change.positive {
+            color: #27ae60;
+        }
+
+        .price-change.negative {
+            color: #e74c3c;
+        }
+
+        /* Action Buttons */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        /* Social Links */
+        .social-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c3e50;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-link:hover {
+            background: #2c3e50;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .disclaimer {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .container {
+                padding: 0 1rem;
+                padding-top: 80px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-text">Loading Summer Coin...</div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">Summer Coin</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    
+
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="floating-element">🏖️</div>
+        <div class="floating-element">🌊</div>
+        <div class="floating-element">☀️</div>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">Summer Coin</h1>
+            <p class="hero-subtitle">The Digital Asset of Nostalgic Memories</p>
+            <p class="hero-description">
+                Summer Coin captures the essence of cherished holiday moments and the bittersweet beauty of nostalgia. 
+                More than just a digital asset, it's a community-driven token that celebrates the universal experience 
+                of summer memories and the emotions they evoke.
+            </p>
+   
+
+       <div class="token-display">
+            <div class="token-logo">
+            <img src="SummerCoin.png" alt="Summer Coin Logo" class="token-img">
+        </div>
+            <h2>SUMMER</h2>
+                 <p>Building memories on the blockchain</p>
+        </div>
+
+        </section>
+
+        <!-- Price Information -->
+        <section class="price-info">
+            <div class="price-card">
+                <div class="price-value" id="currentPrice">$0.001337</div>
+                <div class="price-label">Current Price</div>
+                <div class="price-change negative" id="priceChange">-12.5%</div>
+            </div>
+            <div class="price-card">
+                <div class="price-value" id="marketCap">$420,690</div>
+                <div class="price-label">Market Cap</div>
+            </div>
+            <div class="price-card">
+                <div class="price-value" id="holders">13,337</div>
+                <div class="price-label">Token Holders</div>
+            </div>
+            <div class="price-card">
+                <div class="price-value">1B</div>
+                <div class="price-label">Total Supply</div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <h2 style="color: white; margin-bottom: 1rem;">Join the Summer Coin Community</h2>
+            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">
+                Be part of a movement that values memories, community, and the beauty of nostalgia.
+            </p>
+            <div class="button-group">
+                <a href="#" class="btn btn-primary" onclick="handleBuyClick()">Buy Summer Coin</a>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features" id="about">
+            <h2 style="text-align: center; color: white; margin-bottom: 1rem;">Why Summer Coin?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌅</div>
+                    <h3 class="feature-title">Nostalgic Value</h3>
+                    <p class="feature-description">
+                        Our token represents the emotional value of summer memories, creating a unique connection 
+                        between digital assets and personal experiences.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏘️</div>
+                    <h3 class="feature-title">Community Driven</h3>
+                    <p class="feature-description">
+                        Built by the community, for the community. Every holder has a voice in shaping 
+                        the future of Summer Coin and its ecosystem.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Secure & Transparent</h3>
+                    <p class="feature-description">
+                        Built on proven blockchain technology with full transparency. All transactions 
+                        and smart contracts are publicly verifiable.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Section -->
+        <section class="social-section" id="community">
+            <h2 style="color: white; margin-bottom: 1rem;">Connect With Our Community</h2>
+            <p style="color: rgba(255, 255, 255, 0.8);">
+                Join thousands of Summer Coin enthusiasts sharing memories and building the future together.
+            </p>
+            <div class="social-links">
+                <a href="https://x.com/summerco1n?s=21&t=G3twT_4tkx_yipdDA4FXzg" target="_blank" class="social-link">
+                    🐦 Twitter
+                </a>
+                <a href="https://t.me/SummerCoinOnPumpFun" target="_blank" class="social-link">
+                    💬 Telegram
+                </a>
+                <a href="https://www.tiktok.com/@summer.coin?_t=ZN-8ytmVAlfMlq&_r=1" target="_blank" class="social-link">
+                    🎵 TikTok
+                </a>
+            
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Summer Coin</h3>
+            <p>Preserving memories, building futures</p>
+            
+            <div class="disclaimer">
+                <h4>Important Disclaimer</h4>
+                <p>
+                    Summer Coin is a digital asset with inherent risks. Cryptocurrency investments are highly volatile 
+                    and may result in significant financial loss. Please conduct thorough research and only invest 
+                    what you can afford to lose. This website does not constitute financial advice.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Risk Warning:</strong> Digital assets are speculative investments. Past performance 
+                    does not guarantee future results. Always consult with qualified financial professionals 
+                    before making investment decisions.
+                </p>
+            </div>
+            
+            <p style="margin-top: 2rem; opacity: 0.7;">
+                © 2024 Summer Coin. All rights reserved. | Built with nostalgia and blockchain technology.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Price animation with realistic fluctuations
+        function animatePrice() {
+            const priceElement = document.getElementById('currentPrice');
+            const changeElement = document.getElementById('priceChange');
+            const marketCapElement = document.getElementById('marketCap');
+            
+            let basePrice = 0.001337;
+            let currentPrice = basePrice;
+            
+            setInterval(() => {
+                // More realistic price movements
+                const volatility = 0.05; // 5% max change
+                const change = (Math.random() - 0.5) * volatility * currentPrice;
+                currentPrice = Math.max(0.0001, currentPrice + change);
+                
+                const priceChange = ((currentPrice - basePrice) / basePrice * 100);
+                const marketCap = (currentPrice * 1000000000).toLocaleString(undefined, {
+                    style: 'currency',
+                    currency: 'USD',
+                    maximumFractionDigits: 0
+                });
+                
+                priceElement.textContent = `$${currentPrice.toFixed(6)}`;
+                changeElement.textContent = `${priceChange > 0 ? '+' : ''}${priceChange.toFixed(2)}%`;
+                changeElement.className = `price-change ${priceChange > 0 ? 'positive' : 'negative'}`;
+                marketCapElement.textContent = marketCap;
+                
+                // Update base price occasionally for trend
+                if (Math.random() < 0.1) {
+                    basePrice = currentPrice;
+                }
+            }, 3000);
+        }
+
+        // Animate holder count
+        function animateHolders() {
+            const holdersElement = document.getElementById('holders');
+            let currentHolders = 13337;
+            
+            setInterval(() => {
+                const change = Math.random() > 0.7 ? 
+                    Math.floor(Math.random() * 5) + 1 : 
+                    -(Math.floor(Math.random() * 2));
+                currentHolders = Math.max(10000, currentHolders + change);
+                holdersElement.textContent = currentHolders.toLocaleString();
+            }, 5000);
+        }
+
+        // Button handlers
+        function handleBuyClick() {
+            // Professional modal or redirect
+            const confirmed = confirm(
+                "You will be redirected to our trading partner. Please ensure you understand the risks involved with cryptocurrency investments."
+            );
+            if (confirmed) {
+                window.open('https://pump.fun/profile/9NZY5pusxLRJvG7YE17A9jpvCEoHPQoCnUtPHQkM2qB9', '_blank');
+            }
+        }
+
+        function handleWhitepaperClick() {
+            alert("Whitepaper coming soon! Join our community for updates.");
+        }
+
+    
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Loading screen
+        function hideLoading() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            setTimeout(() => {
+                loadingOverlay.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 500);
+            }, 1500);
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Initialize all animations
+        document.addEventListener('DOMContentLoaded', function() {
+            hideLoading();
+            animatePrice();
+            animateHolders();
+            
+            console.log('🌟 Summer Coin website loaded successfully');
+            console.log('📊 Real-time price updates active');
+            console.log('🚀 Professional interface initialized');
+        });
+
+        // Add some interactivity to the token icon
+        document.querySelector('.token-icon').addEventListener('click', function() {
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+    </script>
+</body>
+</html>
