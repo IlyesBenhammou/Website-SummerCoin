@@ -876,7 +876,31 @@
         });
 
         
-        // ---------------- Countdown (11h30) ----------------
+// ---------------- Countdown (6h00) ----------------
+(function setupCountdown(){
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    if (!hoursEl  !minutesEl  !secondsEl) return;
+    const START_SECONDS = (6 * 60 * 60); // 6h00
+    let remaining = START_SECONDS;
+    function pad(n){ return n.toString().padStart(2,'0'); }
+    function tick(){
+        if (remaining <= 0){
+            hoursEl.textContent = "00";
+            minutesEl.textContent = "00";
+            secondsEl.textContent = "00";
+            // Optional little finale
+            const title = document.querySelector('.countdown-title');
+            if (title) title.textContent = " LIFTOFF!";
+            clearInterval(timer);
+            return;
+        }
+        const h = Math.floor(remaining / 3600);
+        const m = Math.floor((remaining % 3600) / 60);
+        const s = remaining % 60;
+        hoursEl.textContent = pad(h);
+// ---------------- Countdown (11h30) ----------------
         (function setupCountdown(){
             const hoursEl = document.getElementById('hours');
             const minutesEl = document.getElementById('minutes');
