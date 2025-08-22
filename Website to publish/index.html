@@ -501,6 +501,69 @@
             0%, 100% { opacity: 0.6; }
             50% { opacity: 1; }
         }
+    
+        /* Countdown */
+        .countdown-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.25rem auto 1.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 9999px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(6px);
+            width: fit-content;
+        }
+        .countdown-title {
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: linear-gradient(90deg, #fff, #ffe08a, #ffd36e, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shimmer 2.8s linear infinite;
+            white-space: nowrap;
+        }
+        .countdown-timer {
+            display: inline-flex;
+            align-items: baseline;
+            gap: .5rem;
+            font-variant-numeric: tabular-nums;
+        }
+        .countdown-unit {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 3ch;
+        }
+        .countdown-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 0 2px 8px rgba(0,0,0,.25);
+        }
+        .countdown-label {
+            font-size: .65rem;
+            font-weight: 700;
+            color: rgba(255,255,255,.8);
+            letter-spacing: .12em;
+        }
+        .countdown-separator {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: rgba(255,255,255,.9);
+            transform: translateY(-2px);
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
     </style>
 </head>
 <body>
@@ -549,6 +612,36 @@
                 of summer memories and the emotions they evoke.
             </p>
    
+
+            <!-- Countdown Timer -->
+            <div class="countdown-container">
+                <h3 class="countdown-title">🚀 $SUMMER Launch</h3>
+                <div class="countdown-timer" id="countdownTimer">
+                    <div class="countdown-unit">
+                        <div class="countdown-number" id="hours">6</div>
+                        <div class="countdown-label">H</div>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-unit">
+                        <div class="countdown-number" id="minutes">30</div>
+                        <div class="countdown-label">M</div>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-unit">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-label">S</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
 
        <div class="token-display">
             <div class="token-logo">
@@ -781,6 +874,40 @@
             console.log('📊 Real-time price updates active');
             console.log('🚀 Professional interface initialized');
         });
+
+        
+       (function setupCountdown(){
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    if (!hoursEl||!minutesEl||  !secondsEl) return;
+    const START_SECONDS = (6 * 60 * 60); // 6h00
+    let remaining = START_SECONDS;
+    function pad(n){ return n.toString().padStart(2,'0'); }
+    function tick(){
+        if (remaining <= 0){
+            hoursEl.textContent = "00";
+            minutesEl.textContent = "00";
+            secondsEl.textContent = "00";
+            // Optional little finale
+            const title = document.querySelector('.countdown-title');
+            if (title) title.textContent = " LIFTOFF!";
+            clearInterval(timer);
+            return;
+        }
+        const h = Math.floor(remaining / 3600);
+        const m = Math.floor((remaining % 3600) / 60);
+        const s = remaining % 60;
+        hoursEl.textContent = pad(h);
+        minutesEl.textContent = pad(m);
+        secondsEl.textContent = pad(s);
+        remaining -= 1;
+    }
+    // Initialize immediately, then run every second
+    tick();
+    const timer = setInterval(tick, 1000);
+})();
+        // ----------------------------------------------------
 
         // Add some interactivity to the token icon
         document.querySelector('.token-icon').addEventListener('click', function() {
